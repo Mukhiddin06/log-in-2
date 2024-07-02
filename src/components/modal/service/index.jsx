@@ -72,9 +72,10 @@ export default function Index({open, handleClose, item}) {
     }
       const handleSubmit =async(values)=>{
     if(item){
+      const payload = {id:item.id, ...values}
         try{
-            const response = await service.update(item.id, values)
-            if(response.status === 200){
+            const response = await service.update(payload)
+            if(response.status === 201){
               window.location.reload()
             }
             console.log(response);
